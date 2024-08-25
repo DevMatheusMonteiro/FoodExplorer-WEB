@@ -93,13 +93,16 @@ export const Container = styled.div`
     margin-top: 2.8rem;
 
     > button {
-      max-width: 100px;
+      max-width: 200px;
     }
     > .finalizePayment {
       background-color: ${({ theme }) => theme.COLORS.MINT._100};
     }
     @media (min-width: 1000px) {
-      display: none;
+      justify-content: flex-end;
+      > button:first-child {
+        display: none;
+      }
     }
   }
 `;

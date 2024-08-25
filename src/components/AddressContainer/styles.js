@@ -5,7 +5,6 @@ export const Container = styled.div`
   > h2 {
     font-size: 2.4rem;
   }
-
   > .search-add-container {
     margin-top: 2.4rem;
     display: flex;
@@ -14,7 +13,6 @@ export const Container = styled.div`
     > button {
       height: 4rem;
       max-width: 80px;
-
       > svg {
         font-size: 1.4rem;
       }
@@ -22,6 +20,7 @@ export const Container = styled.div`
   }
   > .addresses-list {
     list-style: none;
+    padding: 2px;
     margin-top: 2.8rem;
     li + li {
       margin-top: 1.2rem;
@@ -33,7 +32,7 @@ export const Container = styled.div`
     gap: 1.2rem;
     margin-top: 2.8rem;
     > button {
-      max-width: 100px;
+      max-width: 200px;
     }
     @media (min-width: 1000px) {
       display: none;

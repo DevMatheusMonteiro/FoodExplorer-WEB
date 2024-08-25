@@ -8,14 +8,18 @@ import { api } from "../../services/api";
 import { ShoppingBag } from "../../components/ShoppingBag";
 import { AddressContainer } from "../../components/AddressContainer";
 import { PaymentMethodContainer } from "../../components/PaymentMethodContainer";
-import { Button } from "../../components/Button";
 export function Orders() {
   const [page, setPage] = useState(1);
   const [orders, setOrders] = useState([]);
   const [amount, setAmount] = useState(0);
+  const [addresses, setAddresses] = useState([]);
+  const [searchAddress, setSearchAddress] = useState("");
   const [selectedAddress, setSelectedAddress] = useState(0);
-
   const [paymentMethod, setPaymentMethod] = useState("pix");
+  const [debitCards, setDebitCards] = useState([]);
+  const [creditCards, setCreditCards] = useState([]);
+  const [searchDebitCards, setSearchDebitCards] = useState("");
+  const [searchCreditCards, setSearchCreditCards] = useState("");
   const navigate = useNavigate();
   async function handleCreateOrder() {
     const order = { paymentMethod, address_id: selectedAddress, orders };
@@ -94,8 +98,12 @@ export function Orders() {
               <AddressContainer
                 page={page}
                 setPage={setPage}
+                addresses={addresses}
+                setAddresses={setAddresses}
                 selectedAddress={selectedAddress}
                 setSelectedAddress={setSelectedAddress}
+                searchAddress={searchAddress}
+                setSearchAddress={setSearchAddress}
               />
               <PaymentMethodContainer
                 handleCreateOrder={handleCreateOrder}
@@ -103,6 +111,14 @@ export function Orders() {
                 setPage={setPage}
                 paymentMethod={paymentMethod}
                 setPaymentMethod={setPaymentMethod}
+                creditCards={creditCards}
+                setCreditCards={setCreditCards}
+                debitCards={debitCards}
+                setDebitCards={setDebitCards}
+                searchCreditCards={searchCreditCards}
+                setSearchCreditCards={setSearchCreditCards}
+                searchDebitCards={searchDebitCards}
+                setSearchDebitCards={setSearchDebitCards}
               />
             </div>
             <div className="desktop-container">
@@ -113,19 +129,24 @@ export function Orders() {
               />
               <AddressContainer
                 selectedAddress={selectedAddress}
+                addresses={addresses}
+                setAddresses={setAddresses}
                 setSelectedAddress={setSelectedAddress}
+                searchAddress={searchAddress}
+                setSearchAddress={setSearchAddress}
               />
               <PaymentMethodContainer
                 handleCreateOrder={handleCreateOrder}
                 paymentMethod={paymentMethod}
                 setPaymentMethod={setPaymentMethod}
-              />
-              <Button
-                type="button"
-                className="finalizePayment"
-                content="Finalizar pagamento"
-                title="Clique para finalizar pagamento"
-                onClick={handleCreateOrder}
+                creditCards={creditCards}
+                setCreditCards={setCreditCards}
+                debitCards={debitCards}
+                setDebitCards={setDebitCards}
+                searchCreditCards={searchCreditCards}
+                setSearchCreditCards={setSearchCreditCards}
+                searchDebitCards={searchDebitCards}
+                setSearchDebitCards={setSearchDebitCards}
               />
             </div>
           </>

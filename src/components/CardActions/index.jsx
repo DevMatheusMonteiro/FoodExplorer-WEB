@@ -3,28 +3,23 @@ import { Button } from "../Button";
 import { Container } from "./styles";
 import { Input } from "../Input";
 import { api } from "../../services/api";
+import { IconButton } from "../IconButton";
+import { TbTrash } from "react-icons/tb";
+import { FaEdit } from "react-icons/fa";
 
 export function CardActions({
   cardId,
   setUpdateCard,
   openCardActions = false,
-  setOpenCardActions,
 }) {
   const [openForm, setOpenForm] = useState(false);
-
   const [nickname, setNickname] = useState("");
-
   const updateCardContainer = useRef();
-  const containerCardActions = useRef();
-
   async function handleUpdateCard(e) {
     e.preventDefault();
-
     try {
       if (nickname === "") return;
-
       await api.put(`/cards/${cardId}`, { nickname });
-
       setUpdateCard(nickname);
       setOpenForm(false);
     } catch (e) {
@@ -35,52 +30,37 @@ export function CardActions({
       }
     }
   }
-
   async function showCard() {
     const res = await api.get(`/cards/${cardId}`);
-
     setOpenForm(true);
     setNickname(res.data.nickname);
     updateCardContainer.current.focus();
   }
-
   async function handleRemoveCard() {
     await api.delete(`/cards/${cardId}`);
     setUpdateCard(cardId);
-    setOpenCardActions(false);
   }
-
   useEffect(() => {
     if (!openCardActions) setOpenForm(false);
-
-    if (openCardActions) containerCardActions.current.focus();
   }, [openCardActions]);
   return (
-    <Container
-      data-open={openCardActions}
-      ref={containerCardActions}
-      tabIndex={openCardActions ? 0 : -1}
-    >
+    <Container data-open={openCardActions}>
       <div className="remove-update">
-        <Button
-          content="Remover"
+        <IconButton
+          id="removeCard"
           title="Clique para remover"
+          icon={TbTrash}
           disabled={!openCardActions}
           onClick={handleRemoveCard}
         />
-        <Button
-          content="Editar"
+        <IconButton
+          id="editCard"
           title="Clique para editar"
+          icon={FaEdit}
           onClick={() => showCard()}
           disabled={!openCardActions}
         />
       </div>
-      <Button
-        content="cancelar"
-        title="Clique para cancelar as ações"
-        onClick={() => setOpenCardActions(false)}
-        disabled={!openCardActions}
-      />
 
       <form
         className="update-form"
@@ -98,7 +78,6 @@ export function CardActions({
             placeholder="Meu Cartão"
             value={nickname}
           />
-
           <div className="container-buttons">
             <Button
               type="button"

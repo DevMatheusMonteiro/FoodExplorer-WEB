@@ -22,7 +22,7 @@ export const Container = styled.div`
   }
 
   > .card-list {
-    max-height: 400px;
+    max-height: 200px;
     overflow: auto;
     margin-top: 2.4rem;
     padding: 1px 2.4rem;

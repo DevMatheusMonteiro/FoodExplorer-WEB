@@ -12,13 +12,17 @@ export function PaymentMethodContainer({
   paymentMethod,
   setPaymentMethod,
   handleCreateOrder,
+  debitCards,
+  setDebitCards,
+  creditCards,
+  setCreditCards,
+  searchDebitCards,
+  setSearchDebitCards,
+  searchCreditCards,
+  setSearchCreditCards,
 }) {
-  const [debitCards, setDebitCards] = useState([]);
   const [updateDebitCards, setUpdateDebitCards] = useState([]);
-  const [creditCards, setCreditCards] = useState([]);
   const [updatedCreditCards, setUpdateCreditCards] = useState([]);
-  const [searchDebitCards, setSearchDebitCards] = useState("");
-  const [searchCreditCards, setSearchCreditCards] = useState("");
   async function fetchDebitCards() {
     const res = await api.get(`/cards?nickname=${searchDebitCards}&type=debit`);
     setDebitCards(res.data);
@@ -81,15 +85,16 @@ export function PaymentMethodContainer({
                   setUpdateCards={setUpdateCreditCards}
                   cards={creditCards}
                   active={paymentMethod === "credit"}
+                  searchCards={searchCreditCards}
                   setSearchCards={setSearchCreditCards}
                   disabled={page != null && page !== 3}
                   type="credit"
                 />
-
                 <CardContainer
                   setUpdateCards={setUpdateDebitCards}
                   cards={debitCards}
                   active={paymentMethod === "debit"}
+                  searchCards={searchDebitCards}
                   setSearchCards={setSearchDebitCards}
                   disabled={page != null && page != 3}
                   type="debit"

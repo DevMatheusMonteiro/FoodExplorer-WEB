@@ -6,12 +6,10 @@ export const Container = styled.div`
   }
   > .orders-list {
     overflow-y: auto;
-    width: 100%;
     display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
     gap: 1.6rem;
-    max-width: 500px;
     padding: 2px;
     max-height: 400px;
     list-style: none;

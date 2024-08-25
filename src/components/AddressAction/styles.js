@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   &[data-open="false"] {
-    /* transform: translateY(100vh); */
     scale: 0;
   }
   transition: 0.3s ease-in-out;

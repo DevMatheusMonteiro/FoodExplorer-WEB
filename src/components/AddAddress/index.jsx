@@ -1,15 +1,7 @@
 import { Container } from "./styles";
-
-import { FaHome, FaCoffee } from "react-icons/fa";
-
 import { useRef, useState } from "react";
-import { Input } from "../Input";
-import { Select } from "../Select";
-import { Button } from "../Button";
 import { AddressForm } from "../AddressForm";
-
 import { api } from "../../services/api";
-
 export function AddAddress({
   openAddAddress,
   setOpenAddAddress,
@@ -17,35 +9,24 @@ export function AddAddress({
 }) {
   const [street, setStreet] = useState("");
   const [streetError, setStreetError] = useState(false);
-
   const [number, setNumber] = useState("");
   const [numberError, setNumberError] = useState(false);
-
   const [neighborhood, setNeighborhood] = useState("");
   const [neighborhoodError, setNeighborhoodError] = useState(false);
-
   const [complement, setComplement] = useState("");
-
   const [city, setCity] = useState("");
   const [cityError, setCityError] = useState(false);
-
   const [state, setState] = useState({
     value: "",
     label: "",
   });
-
   const [stateError, setStateError] = useState(false);
-
   const [zipCode, setZipCode] = useState("");
   const [zipCodeError, setZipCodeError] = useState(false);
-
   const [type, setType] = useState("general");
-
   const formContainer = useRef();
-
   async function handleAddAddress(e) {
     e.preventDefault();
-
     try {
       const newAddress = {
         selected: 1,
@@ -58,7 +39,6 @@ export function AddAddress({
         zipCode,
         type,
       };
-
       if (
         street === "" ||
         number === "" ||
@@ -74,15 +54,10 @@ export function AddAddress({
         city === "" && setCityError(true);
         zipCode === "" && setZipCodeError(true);
       }
-
       complement === "" && setComplement(null);
-
       const res = await api.post(`/addresses`, newAddress);
-
       newAddress.id = res.data;
-
       setUpdatedAddress(newAddress);
-
       reset();
     } catch (e) {
       if (e.response) {
@@ -90,10 +65,8 @@ export function AddAddress({
       }
     }
   }
-
   function reset() {
     setOpenAddAddress(false);
-
     setStreet("");
     setNumber("");
     setNeighborhood("");
@@ -112,18 +85,15 @@ export function AddAddress({
       .forEach((input) => {
         input.value = "";
       });
-
     state.value != "" &&
       (formContainer.current.querySelector(
         `.select-container .options-list .option-value input[value="${state.value}"]`
       ).checked = false);
-
     setState({
       value: "",
       label: "",
     });
   }
-
   return (
     <Container data-open={openAddAddress}>
       <h3>Novo Endereço</h3>

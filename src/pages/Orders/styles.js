@@ -86,11 +86,9 @@ export const Container = styled.div`
         display: grid;
         grid-template-areas:
           "bag payment"
-          "address payment"
-          "address button";
+          "address payment";
         grid-template-columns: 1fr 1fr;
-        /* grid-template-rows: max-content max-content; */
-        column-gap: 20rem;
+        column-gap: 8rem;
         row-gap: 4rem;
         > .shoppingBagContainer {
           grid-area: bag;
@@ -100,13 +98,6 @@ export const Container = styled.div`
         }
         .paymentMethodContainer {
           grid-area: payment;
-        }
-        > .finalizePayment {
-          grid-area: button;
-          align-self: flex-end;
-          justify-self: end;
-          max-width: 200px;
-          background-color: ${({ theme }) => theme.COLORS.MINT._100};
         }
       }
     }

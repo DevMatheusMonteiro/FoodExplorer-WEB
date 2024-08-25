@@ -52,6 +52,7 @@ export const Products = styled.td`
   text-align: left;
   padding-left: 1.6rem;
   padding-block: 1.6rem;
+  max-width: 300px;
 `;
 export const DateTime = styled.td`
   text-align: left;

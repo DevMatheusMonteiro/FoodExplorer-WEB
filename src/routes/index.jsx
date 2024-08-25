@@ -5,6 +5,7 @@ import { CustomerRoutes } from "./customer.routes";
 
 import { useAuth } from "../hooks/authContext";
 import { AdminRoutes } from "./admin.routes";
+import { EmployeeRoutes } from "./employee.routes";
 
 export function Routes() {
   const { user, role } = useAuth();
@@ -15,7 +16,8 @@ export function Routes() {
         return <CustomerRoutes />;
       case "admin":
         return <AdminRoutes />;
-
+      case "employee":
+        return <EmployeeRoutes />;
       default:
         return <CustomerRoutes />;
     }

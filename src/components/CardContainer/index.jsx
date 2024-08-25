@@ -6,10 +6,10 @@ import { CardItem } from "../CardItem";
 import { Input } from "../Input";
 import { Button } from "../Button";
 import { useRef, useState } from "react";
-import { CardActions } from "../CardActions";
 
 export function CardContainer({
   cards,
+  searchCards,
   setSearchCards,
   active,
   disabled,
@@ -18,7 +18,6 @@ export function CardContainer({
 }) {
   const [openAddCard, setOpenAddCard] = useState(false);
   const [selectedCard, setSelectedCard] = useState();
-  const [openCardActions, setOpenCardActions] = useState();
 
   const [cardId, setCardId] = useState();
 
@@ -28,6 +27,7 @@ export function CardContainer({
     <Container data-active={active}>
       <div className="search-newCardButton">
         <Input
+          value={searchCards}
           description="Pesquise pelo apelido do cartão"
           srOnly
           icon={FaSearch}
@@ -52,12 +52,11 @@ export function CardContainer({
           cards.map((card) => (
             <li key={card.id}>
               <CardItem
-                setOpenCardActions={setOpenCardActions}
                 card={card}
-                setCardId={setCardId}
                 disabled={disabled}
                 selected={selectedCard}
                 setSelected={setSelectedCard}
+                setUpdateCards={setUpdateCards}
               />
             </li>
           ))}
@@ -69,13 +68,6 @@ export function CardContainer({
         addCardContainer={addCard}
         open={openAddCard}
         setOpen={setOpenAddCard}
-      />
-
-      <CardActions
-        setUpdateCard={setUpdateCards}
-        cardId={cardId}
-        openCardActions={openCardActions}
-        setOpenCardActions={setOpenCardActions}
       />
     </Container>
   );

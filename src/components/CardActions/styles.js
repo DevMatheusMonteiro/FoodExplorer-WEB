@@ -2,22 +2,17 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   &[data-open="false"] {
-    transform: translateY(100%);
+    scale: 0;
   }
-
-  padding: 2rem;
   outline: none;
   transition: 0.3s ease-in-out;
   position: absolute;
-  left: 0;
-  bottom: 0;
-  border-radius: 0 0 0.8rem 0.8rem;
-  width: 100%;
+  bottom: 20px;
+  right: 5px;
+  padding: 4px;
+  border-radius: 0.8rem;
   background: ${({ theme }) => theme.GRADIENTS.GRADIENT_200.BG_GRADIENT};
   background: ${({ theme }) => theme.GRADIENTS.GRADIENT_200.GRADIENT};
-
-  height: 10rem;
-
   > .remove-update {
     display: flex;
     justify-content: center;
@@ -25,8 +20,13 @@ export const Container = styled.div`
     gap: 1.2rem;
 
     > button {
-      max-width: 100px;
-      height: 3.2rem;
+      font-size: 2rem;
+    }
+    > #removeCard {
+      color: ${({ theme }) => theme.COLORS.TOMATO._200};
+    }
+    > #editCard {
+      color: ${({ theme }) => theme.COLORS.CARROT._100};
     }
   }
 
@@ -41,20 +41,19 @@ export const Container = styled.div`
 
   > .update-form {
     &[data-open="false"] {
+      > .container {
+        opacity: 0;
+      }
       scale: 0;
     }
-
     outline: none;
     transition: 0.3s ease-in-out;
     top: 50%;
     transform: translateY(-50%);
-
     left: 0;
-
     width: 100%;
-
     position: fixed;
-    z-index: 9999;
+    z-index: 999999;
     > .container {
       max-width: 300px;
       margin: 0 auto;

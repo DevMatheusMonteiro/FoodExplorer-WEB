@@ -5,8 +5,6 @@ export const Container = styled.div`
   border-radius: 0.8rem;
   min-height: 8rem;
   position: relative;
-  overflow: hidden;
-
   > .card-button {
     position: absolute;
     inset: 0;

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Container } from "./styles";
 
 import { FaHome, FaCoffee, FaEllipsisV } from "react-icons/fa";
@@ -13,21 +13,18 @@ export function AddressItem({
   setUpdatedAddress,
   selectedAddress = false,
   disabled,
+  removeAddress,
 }) {
   const [openAddressActions, setOpenAddressActions] = useState(false);
   function formatStreet(street) {
     if (street.toLocaleLowerCase().indexOf("rua ") === 0) {
       const rest = street.substring("rua ".length, street.length);
-
       return `R. ${rest}`;
     }
-
     if (street.toLocaleLowerCase().indexOf("avenida ") === 0) {
       const rest = street.substring("avenida ".length, street.length);
-
       return `Av. ${rest}`;
     }
-
     return street;
   }
   function formatComplement(complement) {
@@ -82,7 +79,7 @@ export function AddressItem({
         title="Clique para editar ou excluir"
       />
       <AddressAction
-        removeAddress={() => removeAddress(addressId)}
+        removeAddress={() => removeAddress(address.id)}
         selectedAddress={selectedAddress}
         addressId={address.id}
         openAddressButtons={openAddressActions}

@@ -31,11 +31,11 @@ export const Container = styled.form`
 
     > button {
       background-color: ${({ theme }) => theme.COLORS.CAKE._100};
-      max-width: 88px;
+      max-width: 150px;
       height: 3.2rem;
 
-      svg {
-        font-size: 1.4rem;
+      > svg {
+        font-size: 2rem;
       }
 
       &[data-selected="true"] {

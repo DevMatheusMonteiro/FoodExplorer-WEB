@@ -3,17 +3,19 @@ import { AddAddress } from "../AddAddress";
 import { Button } from "../Button";
 import { Container } from "./styles";
 import { AddressItem } from "../AddressItem";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Input } from "../Input";
 export function AddressContainer({
   page,
   setPage,
+  addresses,
+  setAddresses,
   selectedAddress,
   setSelectedAddress,
+  searchAddress,
+  setSearchAddress,
 }) {
-  const [addresses, setAddresses] = useState([]);
-  const [searchAddress, setSearchAddress] = useState("");
   const [updatedAddress, setUpdatedAddress] = useState({});
   const [openAddAddress, setOpenAddAddress] = useState(false);
   async function fetchAddresses() {
@@ -27,17 +29,15 @@ export function AddressContainer({
   async function updateSelected(id) {
     const res = await api.patch(`addresses/${id}`);
     setSelectedAddress(res.data.id);
-    setUpdatedAddress(id);
   }
   async function removeAddress(id) {
     const filteredAddresses = addresses.filter((address) => address.id !== id);
     await api.delete(`addresses/${id}`);
     setAddresses(filteredAddresses);
-    setUpdatedAddress(id);
   }
   useEffect(() => {
     fetchAddresses();
-  }, [searchAddress, updatedAddress]);
+  }, [searchAddress, updatedAddress, selectedAddress]);
   return (
     <Container data-page={page} className="addressContainer">
       <h2>Endereço</h2>
@@ -49,6 +49,7 @@ export function AddressContainer({
           icon={FaSearch}
           description="Pesquise por rua ou número"
           placeholder="Pesquise por rua ou número"
+          value={searchAddress}
           onChange={(e) => setSearchAddress(e.target.value)}
         />
         <Button
@@ -67,7 +68,7 @@ export function AddressContainer({
         />
       </div>
       <ul className="addresses-list">
-        {addresses.length > 0 &&
+        {addresses?.length > 0 &&
           addresses.map((address) => {
             if (address) {
               return (
@@ -78,6 +79,7 @@ export function AddressContainer({
                     address={address}
                     selectedAddress={address.id === selectedAddress}
                     updateSelected={updateSelected}
+                    removeAddress={removeAddress}
                   />
                 </li>
               );

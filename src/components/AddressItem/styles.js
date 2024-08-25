@@ -8,6 +8,10 @@ export const Container = styled.div`
 
   &[data-selected="true"] {
     outline: 1px solid ${({ theme }) => theme.COLORS.CAKE._100};
+    > button:first-child {
+      color: ${({ theme }) => theme.COLORS.CAKE._200};
+      opacity: 1;
+    }
   }
 
   &:has(.update-selected-button:focus) {
