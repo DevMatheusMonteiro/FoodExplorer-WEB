@@ -123,7 +123,7 @@ export const Container = styled.form`
           max-width: 130px;
           border-radius: 0.8rem;
           display: flex;
-          padding: 0.8rem;
+          padding: 0 0.8rem;
           background-color: ${({ theme }) => theme.COLORS.LIGHT._600};
         }
         > .newIngredient {
@@ -132,7 +132,7 @@ export const Container = styled.form`
           max-width: 130px;
           border-radius: 0.8rem;
           display: flex;
-          padding: 0.8rem;
+          padding: 0 0.8rem;
           border: 2px dashed ${({ theme }) => theme.COLORS.LIGHT._600};
         }
       }

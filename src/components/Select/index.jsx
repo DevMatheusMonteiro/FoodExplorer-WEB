@@ -85,90 +85,92 @@ export function Select({
         </div>
       </div>
 
-      {options?.length > 0 && (
-        <ul className="options-list">
-          {hideAll === false && (
-            <li className="option-value">
-              <input
-                type="radio"
-                name={name}
-                id="default"
-                value="default"
-                defaultChecked={selectedOption.value === ""}
-                onClick={(e) => {
-                  handleChangeSelected({ value: "", label: "" });
-                  collapseSelect(e);
-                }}
-                onKeyDown={(e) => {
-                  handleChangeSelected({ value: "", label: "" });
-                  collapseSelect(e);
-                }}
-              />
-              <div className="default-option">
-                <label htmlFor="all" className="label">
-                  Todos
-                </label>
-                <FaCheck />
-              </div>
-            </li>
-          )}
-          {newOption && (
-            <li className="option-value">
-              <input
-                type="radio"
-                name={name}
-                id="new"
-                value={newOptionValue}
-                onClick={(e) => {
-                  handleChangeSelected({
-                    value: "new",
-                    label: newOptionValue,
-                  });
-                  newOptionInput.current?.focus();
-                  collapseSelect(e);
-                }}
-                onKeyDown={(e) => {
-                  handleChangeSelected({ value: "new", label: newOptionValue });
-                  newOptionInput.current?.focus();
-                  collapseSelect(e);
-                }}
-              />
-              <div className="new-option">
-                <label htmlFor="new" className="label">
-                  Adicionar
-                </label>
-                <FaPlus />
-              </div>
-            </li>
-          )}
-          {options.map((option, index) => (
-            <li className="option-value" key={index}>
-              <input
-                type="radio"
-                name={name}
-                id={option.value}
-                value={option.value}
-                defaultChecked={selectedOption.value === option.value}
-                onClick={(e) => {
-                  handleChangeSelected(option);
-                  collapseSelect(e);
-                }}
-                onKeyDown={(e) => {
-                  handleChangeSelected(option);
-                  collapseSelect(e);
-                }}
-              />
+      <ul className="options-list">
+        {newOption && (
+          <li className="option-value">
+            <input
+              type="radio"
+              name={name}
+              id="new"
+              value={newOptionValue}
+              onClick={(e) => {
+                handleChangeSelected({
+                  value: "new",
+                  label: newOptionValue,
+                });
+                newOptionInput.current?.focus();
+                collapseSelect(e);
+              }}
+              onKeyDown={(e) => {
+                handleChangeSelected({ value: "new", label: newOptionValue });
+                newOptionInput.current?.focus();
+                collapseSelect(e);
+              }}
+            />
+            <div className="new-option">
+              <label htmlFor="new" className="label">
+                Adicionar
+              </label>
+              <FaPlus />
+            </div>
+          </li>
+        )}
+        {options?.length > 0 && (
+          <>
+            {hideAll === false && (
+              <li className="option-value">
+                <input
+                  type="radio"
+                  name={name}
+                  id="default"
+                  value="default"
+                  defaultChecked={selectedOption.value === ""}
+                  onClick={(e) => {
+                    handleChangeSelected({ value: "", label: "" });
+                    collapseSelect(e);
+                  }}
+                  onKeyDown={(e) => {
+                    handleChangeSelected({ value: "", label: "" });
+                    collapseSelect(e);
+                  }}
+                />
+                <div className="default-option">
+                  <label htmlFor="all" className="label">
+                    Todos
+                  </label>
+                  <FaCheck />
+                </div>
+              </li>
+            )}
+            {options.map((option, index) => (
+              <li className="option-value" key={index}>
+                <input
+                  type="radio"
+                  name={name}
+                  id={option.value}
+                  value={option.value}
+                  defaultChecked={selectedOption.value === option.value}
+                  onClick={(e) => {
+                    handleChangeSelected(option);
+                    collapseSelect(e);
+                  }}
+                  onKeyDown={(e) => {
+                    handleChangeSelected(option);
+                    collapseSelect(e);
+                  }}
+                />
 
-              <div>
-                <label htmlFor={option.value} className="label">
-                  {option.label}
-                </label>
-                <FaCheck />
-              </div>
-            </li>
-          ))}
-        </ul>
-      )}
+                <div>
+                  <label htmlFor={option.value} className="label">
+                    {option.label}
+                  </label>
+                  <FaCheck />
+                </div>
+              </li>
+            ))}
+          </>
+        )}
+      </ul>
     </Container>
   );
 }

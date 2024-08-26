@@ -132,6 +132,7 @@ export function Header({ setData, orders }) {
     <>
       <SideMenu
         options={options}
+        search={search}
         setSearch={setSearch}
         appear={appear}
         setAppear={setAppear}
@@ -171,6 +172,7 @@ export function Header({ setData, orders }) {
               srOnly
               icon={FaSearch}
               placeholder="Busque por pratos ou ingredientes"
+              value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
             <Select

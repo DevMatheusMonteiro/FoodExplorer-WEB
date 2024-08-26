@@ -19,6 +19,7 @@ export function SideMenu({
   setAppear,
   onClick,
   options,
+  search,
   setSearch,
   selectedOption = "",
   setSelectedOption,
@@ -77,6 +78,7 @@ export function SideMenu({
           srOnly
           icon={FaSearch}
           placeholder="Busque por pratos ou ingredientes"
+          value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
 

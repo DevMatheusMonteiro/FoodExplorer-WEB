@@ -16,6 +16,29 @@ export const Container = styled.form`
       flex-wrap: wrap;
     }
 
+    .select-container {
+      .options-list {
+        overflow: auto;
+        max-height: 180px;
+        &::-webkit-scrollbar {
+          width: 4px;
+          height: 4px;
+          background-color: ${({ theme }) => theme.COLORS.DARK._100};
+          opacity: 0;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          cursor: pointer;
+          border-radius: 0.8rem;
+          background-color: ${({ theme }) => theme.COLORS.DARK._900};
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+          background-color: ${({ theme }) => theme.COLORS.DARK._1000};
+        }
+      }
+    }
+
     @media (min-width: 400px) {
       &:nth-last-child(3) {
         flex-wrap: nowrap;

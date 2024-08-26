@@ -5,9 +5,13 @@ export const Container = styled.div`
     "header"
     "main"
     "footer";
-  grid-template-rows: max-content 2fr max-content;
+  grid-template-rows: max-content 1fr max-content;
   grid-template-columns: 1fr;
+  min-height: 100vh;
   > main {
+    /* height: 100vh; */
+    /* position: fixed; */
+    height: 100%;
     width: 100%;
     max-width: 1300px;
     margin: 0 auto;
@@ -61,6 +65,26 @@ export const Container = styled.div`
           }
           > .canceled {
             background-color: ${({ theme }) => theme.COLORS.TOMATO._200};
+          }
+        }
+        .options-list {
+          overflow: auto;
+          max-height: 100px;
+          &::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+            background-color: ${({ theme }) => theme.COLORS.DARK._100};
+            opacity: 0;
+          }
+
+          &::-webkit-scrollbar-thumb {
+            cursor: pointer;
+            border-radius: 0.8rem;
+            background-color: ${({ theme }) => theme.COLORS.DARK._900};
+          }
+
+          &::-webkit-scrollbar-thumb:hover {
+            background-color: ${({ theme }) => theme.COLORS.DARK._1000};
           }
         }
       }

@@ -214,16 +214,11 @@ export function Card({
           onClick={() => navigate(`/edit-product/${data.id}`)}
         />
       )}
-
       <img src={image} alt={data.name} />
-
       <Link to={`/product-details/${data.id}`}>
         {data.name}
         <FaChevronRight />
       </Link>
-
-      <p className="price">{`R$ ${data.price.toFixed(2).replace(".", ",")}`}</p>
-
       {data.description &&
         (data.description.length > 50 ? (
           <small title={data.description}>
@@ -232,6 +227,7 @@ export function Card({
         ) : (
           <small>{data.description}</small>
         ))}
+      <p className="price">{`R$ ${data.price.toFixed(2).replace(".", ",")}`}</p>
       <div className="quantity-button">
         {role == "customer" && (
           <>

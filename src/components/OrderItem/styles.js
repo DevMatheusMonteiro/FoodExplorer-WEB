@@ -77,6 +77,27 @@ export const Container = styled.div`
     }
     > .select-container {
       max-width: 152px;
+
+      .options-list {
+        overflow: auto;
+        max-height: 100px;
+        &::-webkit-scrollbar {
+          width: 4px;
+          height: 4px;
+          background-color: ${({ theme }) => theme.COLORS.DARK._100};
+          opacity: 0;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          cursor: pointer;
+          border-radius: 0.8rem;
+          background-color: ${({ theme }) => theme.COLORS.DARK._900};
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+          background-color: ${({ theme }) => theme.COLORS.DARK._1000};
+        }
+      }
     }
   }
 `;
