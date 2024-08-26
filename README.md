@@ -32,7 +32,7 @@ Bem-vindo ao Food Explorer. Este projeto é um front-end desenvolvido para geren
 
 1. **Clonar o repositório**:
    ```bash
-   git clone https://github.com/seu-usuario/food-explorer.git
+   git clone https://github.com/DevMatheusMonteiro/FoodExplorer-WEB.git
    ```
 2. Instalar dependências
    ```bash
