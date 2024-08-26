@@ -10,7 +10,7 @@ export const Container = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 11.2rem;
-  height: 100vh;
+  min-height: 100vh;
   max-width: 1300px;
   width: 100%;
   margin: 0 auto;
