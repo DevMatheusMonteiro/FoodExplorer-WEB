@@ -9,7 +9,8 @@ export const Container = styled.div`
     display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
-    gap: 1.6rem;
+    column-gap: 4rem;
+    row-gap: 2rem;
     padding: 2px;
     max-height: 400px;
     list-style: none;
@@ -20,14 +21,13 @@ export const Container = styled.div`
       max-width: 230px;
       > div {
         display: grid;
-        grid-template-columns: 1fr max-content;
+        grid-template-columns: 1fr 1fr;
         place-items: center;
         gap: 1.2rem;
         > a {
-          max-width: 100px;
+          width: clamp(6rem, 100%, 8rem);
           > img {
             width: 100%;
-            max-width: 80px;
             border-radius: 50%;
             aspect-ratio: 1/1;
             object-fit: cover;
@@ -39,7 +39,6 @@ export const Container = styled.div`
           border-radius: 4px;
         }
         > div {
-          width: 100%;
           display: flex;
           flex-direction: column;
           gap: 1.2rem;
