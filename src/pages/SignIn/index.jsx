@@ -49,7 +49,7 @@ export function SignIn() {
           type="password"
           description="Senha"
           icon={FaLock}
-          // minLength="6"
+          minLength="6"
           placeholder="No mínimo 6 caracteres"
           required
         />

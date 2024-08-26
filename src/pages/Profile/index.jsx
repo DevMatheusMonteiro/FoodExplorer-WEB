@@ -58,7 +58,7 @@ export function Profile() {
             type="password"
             description="Nova Senha"
             icon={FaLock}
-            // minLength="6"
+            minLength="6"
             placeholder="No mínimo 6 caracteres"
           />
           <Input
@@ -67,7 +67,7 @@ export function Profile() {
             type="password"
             description="Senha Atual"
             icon={FaLock}
-            // minLength="6"
+            minLength="6"
             placeholder="No mínimo 6 caracteres"
             required={newPassword != ""}
           />
